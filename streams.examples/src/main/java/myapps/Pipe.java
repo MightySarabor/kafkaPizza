@@ -48,10 +48,10 @@ public class Pipe {
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
 
         final StreamsBuilder builder = new StreamsBuilder();
-
+        System.err.print("Starting to filter pizzas...");
         final KStream<String, PizzaPOJO> pizzas = builder.stream("pizzas", Consumed.with(Serdes.String(), new JSONSerde<>()));
-        pizzas.filter((name, pizza) -> "L".equals(pizza.getName()));
-        pizzas.peek((name, pizza) -> System.err.print("Pizza: " + pizza.getName()));
+        pizzas.filter((size, pizza) -> "L".equals(pizza.getName()));
+        pizzas.peek((size, pizza) -> System.out.println("Incoming record - name: " + size +" value: " + pizza));
         pizzas.to("big_pizzas");
 
 
