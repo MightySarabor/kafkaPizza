@@ -1,6 +1,8 @@
 package myapps.pojos;
 
-public class PizzaPOJO {
+import myapps.Util.JSONSerdeCompatible;
+
+public class PizzaPOJO implements JSONSerdeCompatible {
     private String name;
     private String size;
     private float price;

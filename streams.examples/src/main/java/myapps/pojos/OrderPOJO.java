@@ -1,8 +1,10 @@
 package myapps.pojos;
 
+import myapps.Util.JSONSerdeCompatible;
+
 import java.util.List;
 
-public class OrderPOJO {
+public class OrderPOJO implements JSONSerdeCompatible {
     private String customer;
     private List<PizzaPOJO> pizzas;
 
