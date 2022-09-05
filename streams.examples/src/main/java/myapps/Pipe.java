@@ -51,6 +51,7 @@ public class Pipe {
 
         final KStream<String, PizzaPOJO> pizzas = builder.stream("pizzas", Consumed.with(Serdes.String(), new JSONSerde<>()));
         pizzas.filter((name, pizza) -> "L".equals(pizza.getName()));
+        pizzas.peek((name, pizza) -> System.err.print("Pizza: " + pizza.getName()));
         pizzas.to("big_pizzas");
 
 
