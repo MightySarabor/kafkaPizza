@@ -26,6 +26,7 @@ import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.kstream.Consumed;
 import org.apache.kafka.streams.kstream.KStream;
+import org.apache.kafka.streams.kstream.Produced;
 
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
@@ -49,13 +50,12 @@ public class Pipe {
 
         final StreamsBuilder builder = new StreamsBuilder();
         System.err.print("Starting to filter pizzas...");
-        final KStream<String, PizzaPOJO> pizzas = builder.stream("pizzas", Consumed.with(Serdes.String(), new JSONSerde<>()));
-        pizzas.filter((size, pizza) -> "L".equals(pizza.getName()));
-        pizzas.peek((size, pizza) -> System.out.println("Incoming record - name: " + size +" value: " + pizza));
-        pizzas.to("big_pizzas");
+        builder.stream("pizzas", Consumed.with(Serdes.String(), new JSONSerde<>()))
+                .to("big_pizzas", Produced.with(Serdes.String(), new JSONSerde<>()));
 
 
         final Topology topology = builder.build();
+        System.out.println(topology.describe());
         final KafkaStreams streams = new KafkaStreams(topology, props);
         final CountDownLatch latch = new CountDownLatch(1);
 
