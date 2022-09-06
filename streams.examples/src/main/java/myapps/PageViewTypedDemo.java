@@ -189,11 +189,15 @@ public class PageViewTypedDemo {
 
         final StreamsBuilder builder = new StreamsBuilder();
 
-        final KStream<String, PageView> views = builder.stream("streams-pageview-input", Consumed.with(Serdes.String(), new JSONSerde<>()));
+        //final KStream<String, PageView> views = builder.stream("my_first", Consumed.with(Serdes.String(), new JSONSerde<>()));
 
-        final KTable<String, UserProfile> users = builder.table("streams-userprofile-input", Consumed.with(Serdes.String(), new JSONSerde<>()));
+        // KTable<String, UserProfile> users = builder.table("streams-userprofile-input", Consumed.with(Serdes.String(), new JSONSerde<>()));
 
-        final Duration duration24Hours = Duration.ofHours(24);
+        //final Duration duration24Hours = Duration.ofHours(24);
+
+        builder.stream("my_first",
+                        Consumed.with(Serdes.String(), new JSONSerde<>()))
+                .peek((k, pv) -> System.out.println(pv));
 
         /*final KStream<WindowedPageViewByRegion, RegionCount> regionCount = views
                 .leftJoin(users, (view, profile) -> {
@@ -228,9 +232,7 @@ public class PageViewTypedDemo {
         // write to the result topic
         regionCount.to("streams-pageviewstats-typed-output", Produced.with(new JSONSerde<>(), new JSONSerde<>()));
         */
-        builder.stream("my_first",
-                        Consumed.with(Serdes.String(), new JSONSerde<>()))
-                .peek((k, pv) -> System.out.println(pv));
+
 
 
         final KafkaStreams streams = new KafkaStreams(builder.build(), props);
