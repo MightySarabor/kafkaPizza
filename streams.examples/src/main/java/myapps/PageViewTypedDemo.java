@@ -145,6 +145,15 @@ public class PageViewTypedDemo {
         public String user;
         public String page;
         public Long timestamp;
+
+        @Override
+        public String toString() {
+            return "PageView{" +
+                    "user='" + user + '\'' +
+                    ", page='" + page + '\'' +
+                    ", timestamp=" + timestamp +
+                    '}';
+        }
     }
 
     static public class UserProfile implements JSONSerdeCompatible {
