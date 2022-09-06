@@ -27,7 +27,7 @@ public class Producer {
 
         for(int i = 0; i <= 1000; i++) {
             String topic = "my_first";
-            String value = Json.stringify(Json.toJson(generateOrder()));
+            String value = Json.prettyPrint(Json.toJson(generateOrder()));
             String key = "Customer: " + Json.fromJson(Json.parse(value), OrderPOJO.class).getCustomer();
             //Sending data
             first_producer.send(record, new Callback() {
@@ -44,8 +44,8 @@ public class Producer {
                     }
                 }
             }).get();
-            first_producer.flush();
-            first_producer.close();
         }
+        first_producer.flush();
+        first_producer.close();
     }
 }
