@@ -228,7 +228,7 @@ public class PageViewTypedDemo {
         // write to the result topic
         regionCount.to("streams-pageviewstats-typed-output", Produced.with(new JSONSerde<>(), new JSONSerde<>()));
         */
-        builder.stream("streams-pageview-input",
+        builder.stream("my_first",
                         Consumed.with(Serdes.String(), new JSONSerde<>()))
                 .peek((k, pv) -> System.out.println(pv));
 
