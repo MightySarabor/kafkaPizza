@@ -22,14 +22,14 @@ public class Producer {
 
         KafkaProducer<String,String> first_producer = new KafkaProducer<String, String>(properties);
 
-        ProducerRecord<String, String> record =
-                new ProducerRecord<String, String>("my_first", Json.stringify(Json.toJson(generateOrder())));
+
 
         for(int i = 0; i <= 1000; i++) {
             String topic = "my_first";
             String value = Json.prettyPrint(Json.toJson(generateOrder()));
             System.out.println(value);
-            String key = "Customer: " + Json.fromJson(Json.parse(value), OrderPOJO.class).getCustomer();
+            ProducerRecord<String, String> record =
+                    new ProducerRecord<String, String>("my_first", Json.stringify(Json.toJson(generateOrder())));
             //Sending data
             first_producer.send(record, new Callback() {
                 public void onCompletion(RecordMetadata recordMetadata, Exception e) {
