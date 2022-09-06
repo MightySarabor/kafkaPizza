@@ -186,18 +186,18 @@ public class PageViewTypedDemo {
 
         // setting offset reset to earliest so that we can re-run the demo code with the same pre-loaded data
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-
+        System.out.println("Starting stream...");
         final StreamsBuilder builder = new StreamsBuilder();
-
+        builder.stream("my_first",
+                        Consumed.with(Serdes.String(), new JSONSerde<>()))
+                .peek((k, pv) -> System.out.println("test " + pv));
         //final KStream<String, PageView> views = builder.stream("my_first", Consumed.with(Serdes.String(), new JSONSerde<>()));
 
         // KTable<String, UserProfile> users = builder.table("streams-userprofile-input", Consumed.with(Serdes.String(), new JSONSerde<>()));
 
         //final Duration duration24Hours = Duration.ofHours(24);
 
-        builder.stream("my_first",
-                        Consumed.with(Serdes.String(), new JSONSerde<>()))
-                .peek((k, pv) -> System.out.println(pv));
+
 
         /*final KStream<WindowedPageViewByRegion, RegionCount> regionCount = views
                 .leftJoin(users, (view, profile) -> {
@@ -232,8 +232,6 @@ public class PageViewTypedDemo {
         // write to the result topic
         regionCount.to("streams-pageviewstats-typed-output", Produced.with(new JSONSerde<>(), new JSONSerde<>()));
         */
-
-
 
         final KafkaStreams streams = new KafkaStreams(builder.build(), props);
         final CountDownLatch latch = new CountDownLatch(1);
