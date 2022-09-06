@@ -27,13 +27,6 @@
 
     <name>Kafka Streams Quickstart :: Java</name>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kafka.version>3.2.1</kafka.version>
-        <slf4j.version>1.7.7</slf4j.version>
-        <log4j.version>1.2.17</log4j.version>
-    </properties>
-
     <repositories>
         <repository>
             <id>apache.snapshots</id>
@@ -127,11 +120,34 @@
 
     <dependencies>
         <!-- Apache Kafka dependencies -->
+        <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-streams -->
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-streams</artifactId>
-            <version>${kafka.version}</version>
+            <version>3.2.1</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.4.0</version>
+        <exclusions>
+                <exclusion>
+                    <!-- Defined below -->
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
 
         <!-- Jackson dependencies -->
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->

@@ -1,5 +1,14 @@
+C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\java\myapps\PageViewTypedDemo.java
 C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\java\myapps\WordCount.java
+C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\java\test\myapps\JsonTest.java
+C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\java\myapps\Util\Json\JsonPOJOSerializer.java
+C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\java\myapps\Util\Json\JsonTimestampExtractor.java
+C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\java\myapps\Util\POJOGenerator.java
+C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\java\myapps\pojos\PizzaPOJO.java
+C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\java\myapps\Util\Json\JSONSerde.java
+C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\java\myapps\Util\Producer.java
 C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\java\myapps\Pipe.java
 C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\java\myapps\LineSplit.java
-C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\java\myapps\JSONSerdeCompatible.java
-C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\java\myapps\JSONSerde.java
+C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\java\myapps\Util\Json\JSONSerdeCompatible.java
+C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\java\myapps\Util\Json\Json.java
+C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\java\myapps\pojos\OrderPOJO.java

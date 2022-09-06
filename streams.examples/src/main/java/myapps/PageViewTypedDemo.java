@@ -19,13 +19,10 @@ package myapps;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import myapps.Util.Json.Json;
 import myapps.Util.Json.JsonPOJOSerializer;
-import myapps.Util.Json.JsonTimestampExtractor;
-import org.apache.kafka.clients.consumer.ConsumerConfig;
+
 import org.apache.kafka.common.errors.SerializationException;
 import org.apache.kafka.common.serialization.Deserializer;
 import org.apache.kafka.common.serialization.Serde;
@@ -33,15 +30,10 @@ import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.common.serialization.Serializer;
 import org.apache.kafka.streams.*;
 import org.apache.kafka.streams.kstream.Consumed;
-import org.apache.kafka.streams.kstream.Produced;
-import org.apache.kafka.streams.kstream.Grouped;
-import org.apache.kafka.streams.kstream.KStream;
-import org.apache.kafka.streams.kstream.KTable;
-import org.apache.kafka.streams.kstream.TimeWindows;
+
 
 
 import java.io.IOException;
-import java.time.Duration;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
