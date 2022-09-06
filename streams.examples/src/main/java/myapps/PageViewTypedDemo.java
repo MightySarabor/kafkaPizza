@@ -19,6 +19,8 @@ package myapps;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import myapps.Util.Json.Json;
 import myapps.Util.Json.JsonPOJOSerializer;
@@ -189,7 +191,14 @@ public class PageViewTypedDemo {
 
         builder.stream("my_first",
                         Consumed.with(Serdes.String(), new JSONSerde<>()))
-                .peek((k, pv) -> System.out.println(pv));
+                .peek((k, pv) -> {
+                    try {
+                        System.out.println(Json.prettyPrint((JsonNode) pv));
+                    } catch (JsonProcessingException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
 
         final Topology topology = builder.build();
         final KafkaStreams streams = new KafkaStreams(topology, props);
