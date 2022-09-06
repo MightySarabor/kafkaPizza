@@ -1,9 +1,7 @@
 package myapps.Util.Json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.*;
 
 public class Json {
     private static ObjectMapper objectMapper = getDefaultObjectMapper();
@@ -26,4 +24,23 @@ public class Json {
     public static JsonNode toJson(Object a){
         return objectMapper.valueToTree(a);
     }
+
+    public static String stringify(JsonNode node) throws JsonProcessingException {
+        return generateString(node, false);
+    }
+
+    public static String prettyPrint(JsonNode node) throws JsonProcessingException {
+        return generateString(node, true);
+    }
+
+    private static String generateString(JsonNode node, boolean pretty) throws JsonProcessingException {
+        ObjectWriter objectWriter = objectMapper.writer();
+        if(pretty){
+            objectWriter = objectWriter.with(SerializationFeature.INDENT_OUTPUT);
+        }
+        return objectWriter.writeValueAsString(node);
+    }
+
+
+
 }

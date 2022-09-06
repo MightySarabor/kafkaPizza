@@ -43,4 +43,14 @@ class JsonTest {
         JsonNode node = Json.toJson(pojo);
         assertEquals(node.get("name").asText(), "Hawaii");
     }
+    @Test
+    void stringify() throws JsonProcessingException {
+
+        PizzaPOJO pojo = new PizzaPOJO("Hawaii", "S", 6.5F);
+        JsonNode node = Json.toJson(pojo);
+        String json = Json.stringify(node);
+        String prettyJson = Json.prettyPrint((node));
+        System.out.print(prettyJson);
+    }
+
 }
