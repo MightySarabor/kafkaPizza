@@ -141,7 +141,7 @@ public class PageViewTypedDemo {
     }
 
     // POJO classes
-    static public class PageView{
+    static public class PageView implements JSONSerdeCompatible {
         public String user;
         public String page;
         public Long timestamp;
@@ -198,7 +198,7 @@ public class PageViewTypedDemo {
 
         builder.stream("my_first",
                         Consumed.with(Serdes.String(), new JSONSerde<>()))
-                .peek((k, pv) -> System.out.println(pv.toString()));
+                .peek((k, pv) -> System.out.println(pv));
 
 
         final Topology topology = builder.build();
