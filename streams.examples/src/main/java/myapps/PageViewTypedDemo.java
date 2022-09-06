@@ -189,7 +189,7 @@ public class PageViewTypedDemo {
 
         builder.stream("my_first",
                         Consumed.with(Serdes.String(), new JSONSerde<>()))
-                .peek((k, pv) -> System.out.println(pv));
+                .peek((k, pv) -> System.out.println(pv.toString()));
 
 
         final Topology topology = builder.build();
