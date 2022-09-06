@@ -195,7 +195,7 @@ public class PageViewTypedDemo {
 
         final Duration duration24Hours = Duration.ofHours(24);
 
-        final KStream<WindowedPageViewByRegion, RegionCount> regionCount = views
+        /*final KStream<WindowedPageViewByRegion, RegionCount> regionCount = views
                 .leftJoin(users, (view, profile) -> {
                     final PageViewByRegion viewByRegion = new PageViewByRegion();
                     viewByRegion.user = view.user;
@@ -227,6 +227,11 @@ public class PageViewTypedDemo {
 
         // write to the result topic
         regionCount.to("streams-pageviewstats-typed-output", Produced.with(new JSONSerde<>(), new JSONSerde<>()));
+        */
+        builder.stream("streams-pageview-input",
+                        Consumed.with(Serdes.String(), new JSONSerde<>()))
+                .peek((k, pv) -> System.out.println(pv));
+
 
         final KafkaStreams streams = new KafkaStreams(builder.build(), props);
         final CountDownLatch latch = new CountDownLatch(1);
