@@ -182,13 +182,13 @@ public class PageViewTypedDemo {
         Properties props = new Properties();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "test_stream");
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, JSONSerde.class);
-        props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, JSONSerde.class);
+        props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+        props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 
         final StreamsBuilder builder = new StreamsBuilder();
 
         builder.stream("my_first",
-                        Consumed.with(Serdes.String(), new JSONSerde<>()))
+                        Consumed.with(Serdes.String(), Serdes.String()))
                 .peek((k, pv) -> System.out.println(pv));
 
         final Topology topology = builder.build();
