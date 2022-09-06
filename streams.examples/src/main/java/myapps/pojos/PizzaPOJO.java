@@ -1,11 +1,21 @@
 package myapps.pojos;
 
-import myapps.Util.JSONSerdeCompatible;
+import myapps.Util.Json.JSONSerdeCompatible;
 
 public class PizzaPOJO implements JSONSerdeCompatible {
     private String name;
     private String size;
     private float price;
+
+    public PizzaPOJO() {
+
+    }
+
+    public PizzaPOJO(String name, String size, float price){
+        this.name = name;
+        this.size = size;
+        this.price = price;
+    }
 
     public String getName() {
         return name;

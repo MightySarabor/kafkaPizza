@@ -1,8 +1,7 @@
-package myapps.Util;
+package myapps.Util.Json;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import myapps.Util.JSONSerde;
 import myapps.pojos.OrderPOJO;
 import myapps.pojos.PizzaPOJO;
 

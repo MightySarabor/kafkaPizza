@@ -16,7 +16,7 @@
  */
 package myapps;
 
-import myapps.Util.JSONSerde;
+import myapps.Util.Json.JSONSerde;
 import myapps.pojos.PizzaPOJO;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.Serdes;

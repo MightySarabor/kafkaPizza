@@ -1,4 +1,4 @@
-package myapps.Util;
+package myapps.Util.Json;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import myapps.PageViewTypedDemo;

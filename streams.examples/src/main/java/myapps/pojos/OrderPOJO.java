@@ -1,12 +1,20 @@
 package myapps.pojos;
 
-import myapps.Util.JSONSerdeCompatible;
+import myapps.Util.Json.JSONSerdeCompatible;
 
 import java.util.List;
 
 public class OrderPOJO implements JSONSerdeCompatible {
     private String customer;
     private List<PizzaPOJO> pizzas;
+
+    public OrderPOJO(){
+
+    }
+    public OrderPOJO(String customer, List pizzas){
+        this.customer = customer;
+        this.pizzas = pizzas;
+    }
 
     public String getCustomer() {
         return customer;
