@@ -1,6 +1,5 @@
-{
-  "_t": "pizza",
-  "name": "Hawaii",
-  "size": "L",
-  "price": 12.5
+{"_t":"pv",
+  "user":"hans",
+  "page":"news",
+  "timestamp":12908734094
 }
