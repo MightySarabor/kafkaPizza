@@ -1,32 +1,51 @@
 package myapps.Util;
 
-import com.github.javafaker.Faker;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import myapps.Util.Json.Json;
 import myapps.pojos.OrderPOJO;
-import myapps.pojos.PizzaPOJO;
+import org.apache.kafka.clients.producer.*;
+import org.apache.kafka.common.serialization.StringSerializer;
 
-import java.util.Arrays;
+import java.util.Properties;
+import java.util.concurrent.ExecutionException;
+
+import static myapps.Util.POJOGenerator.generateOrder;
 
 public class Producer {
+    public static void main(String[] args) throws JsonProcessingException, ExecutionException, InterruptedException {
+        //properties
+        String bootstrapServers = "localhost:9092";
+        Properties properties = new Properties();
+        properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
+        properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 
-    public OrderPOJO generateOrder(){
-        Faker faker = new Faker();
+        KafkaProducer<String,String> first_producer = new KafkaProducer<String, String>(properties);
 
-        String name = faker.name().fullName();
-        String firstName = faker.name().firstName();
-        String lastName = faker.name().lastName();
+        ProducerRecord<String, String> record =
+                new ProducerRecord<String, String>("my_first", Json.stringify(Json.toJson(generateOrder())));
 
-        PizzaPOJO[] pizzas = {generatePizza(), generatePizza(), generatePizza()};
+        for(int i = 0; i <= 1000; i++) {
+            String topic = "my_first";
+            String value = Json.stringify(Json.toJson(generateOrder()));
+            String key = "Customer: " + Json.fromJson(Json.parse(value), OrderPOJO.class).getCustomer();
+            //Sending data
+            first_producer.send(record, new Callback() {
+                public void onCompletion(RecordMetadata recordMetadata, Exception e) {
 
-        return new OrderPOJO(name, Arrays.asList(pizzas));
-    }
-
-    public PizzaPOJO generatePizza(){
-        return new PizzaPOJO("Hawaii", "L", 12.5F);
-    }
-
-    public static void main(String[] args){
-
-
-
+                    if (e == null) {
+                        System.out.println("Successfully recieved the details as: \n" +
+                                "Topic: " + recordMetadata.topic() + "\n" +
+                                "Partition: " + recordMetadata.partition() + "\n" +
+                                "Offset: " + recordMetadata.offset() + "\n" +
+                                "TimeStamp:" + recordMetadata.timestamp());
+                    } else {
+                        System.err.println("Can't produce, getting Error: " + e);
+                    }
+                }
+            }).get();
+            first_producer.flush();
+            first_producer.close();
+        }
     }
 }

@@ -48,9 +48,8 @@ class JsonTest {
 
         PizzaPOJO pojo = new PizzaPOJO("Hawaii", "S", 6.5F);
         JsonNode node = Json.toJson(pojo);
-        String json = Json.stringify(node);
-        String prettyJson = Json.prettyPrint((node));
-        System.out.print(prettyJson);
+        System.out.println(Json.stringify(node));
+        System.out.println(Json.prettyPrint(node));
     }
 
 }
