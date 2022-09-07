@@ -41,5 +41,12 @@ public class PizzaPOJO implements JSONSerdeCompatible {
         this.price = price;
     }
 
-
+    @Override
+    public String toString() {
+        return "PizzaPOJO{" +
+                "name='" + name + '\'' +
+                ", size='" + size + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }

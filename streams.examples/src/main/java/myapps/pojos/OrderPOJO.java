@@ -32,5 +32,11 @@ public class OrderPOJO implements JSONSerdeCompatible {
         this.pizzas = pizzas;
     }
 
-
+    @Override
+    public String toString() {
+        return "OrderPOJO{" +
+                "customer='" + customer + '\'' +
+                ", pizzas=" + pizzas +
+                '}';
+    }
 }

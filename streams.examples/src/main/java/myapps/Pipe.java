@@ -40,22 +40,19 @@ public class Pipe {
 
     public static void main(String[] args) throws Exception {
         Properties props = new Properties();
-        props.put(StreamsConfig.APPLICATION_ID_CONFIG, "streams-pipe");
+        props.put(StreamsConfig.APPLICATION_ID_CONFIG, "test_stream");
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, JSONSerde.class);
-        props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, JSONSerde.class);
-
-        // setting offset reset to earliest so that we can re-run the demo code with the same pre-loaded data
-        props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+        props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, PageViewTypedDemo.JSONSerde.class);
+        props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, PageViewTypedDemo.JSONSerde.class);
 
         final StreamsBuilder builder = new StreamsBuilder();
-        final KStream<String, PizzaPOJO> pizzas = builder.stream("pizzas", Consumed.with(Serdes.String(), new JSONSerde<>()));
-                pizzas.filter((size, pizza) -> pizza.getSize().equals("L"))
-                .to("big_pizzas", Produced.with(Serdes.String(), new JSONSerde<>()));
+
+        builder.stream("my_first",
+                        Consumed.with(Serdes.String(), new PageViewTypedDemo.JSONSerde<>()))
+                .peek((k, pizza) -> System.out.println(pizza));
 
 
         final Topology topology = builder.build();
-        System.out.println(topology.describe());
         final KafkaStreams streams = new KafkaStreams(topology, props);
         final CountDownLatch latch = new CountDownLatch(1);
 
