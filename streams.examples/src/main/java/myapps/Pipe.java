@@ -42,14 +42,14 @@ public class Pipe {
         Properties props = new Properties();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "test_stream");
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, PageViewTypedDemo.JSONSerde.class);
-        props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, PageViewTypedDemo.JSONSerde.class);
+        props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, JSONSerde.class);
+        props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, JSONSerde.class);
 
         final StreamsBuilder builder = new StreamsBuilder();
 
-        builder.stream("streams-plaintext-input",
-                        Consumed.with(Serdes.String(), new PageViewTypedDemo.JSONSerde<>()))
-                .peek((k, order) -> System.out.println(order));
+        builder.stream("my_second",
+                        Consumed.with(Serdes.String(), new JSONSerde<>()))
+                .peek((k, pv) -> System.out.println(pv));
 
 
         final Topology topology = builder.build();

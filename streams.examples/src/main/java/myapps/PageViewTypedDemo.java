@@ -153,7 +153,7 @@ public class PageViewTypedDemo {
     }
 
     public static void main(final String[] args) throws IOException {
-                Properties props = new Properties();
+        Properties props = new Properties();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "test_stream");
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, JSONSerde.class);
