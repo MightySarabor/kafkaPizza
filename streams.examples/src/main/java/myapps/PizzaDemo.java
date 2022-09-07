@@ -128,14 +128,14 @@ public class PizzaDemo {
     @SuppressWarnings("DefaultAnnotationParam") // being explicit for the example
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "_t")
     @JsonSubTypes({
-            @JsonSubTypes.Type(value = PageView.class, name = "pv"),
+            @JsonSubTypes.Type(value = Pizza.class, name = "pv"),
     })
     public interface JSONSerdeCompatible {
 
     }
 
     // POJO classes
-    static public class PageView implements JSONSerdeCompatible {
+    static public class Pizza implements JSONSerdeCompatible {
         public String name;
         public String size;
 
