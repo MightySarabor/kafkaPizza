@@ -128,7 +128,7 @@ public class PizzaDemo {
     @SuppressWarnings("DefaultAnnotationParam") // being explicit for the example
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "_t")
     @JsonSubTypes({
-            @JsonSubTypes.Type(value = Pizza.class, name = "pv"),
+            @JsonSubTypes.Type(value = Pizza.class, name = "pizza"),
     })
     public interface JSONSerdeCompatible {
 
