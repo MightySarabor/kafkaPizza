@@ -159,7 +159,7 @@ public class PageViewTypedDemo {
 
         final StreamsBuilder builder = new StreamsBuilder();
 
-        builder.stream("my_second",
+        builder.stream("my_third",
                         Consumed.with(Serdes.String(), new JSONSerde<>()))
                 .peek((k, pv) -> System.out.println(pv));
 
