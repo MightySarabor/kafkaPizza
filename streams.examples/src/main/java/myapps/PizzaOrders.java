@@ -67,7 +67,7 @@ import java.util.concurrent.CountDownLatch;
  * generic {@link JSONSerde}. If you instead specify a specific serde per class, you won't need the extra "_t" field.
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
-public class PageViewTypedDemo {
+public class PizzaOrders {
 
     /**
      * A serde for any class that implements {@link JSONSerdeCompatible}. Note that the classes also need to
