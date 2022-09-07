@@ -131,10 +131,6 @@ public class PageViewTypedDemo {
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "_t")
     @JsonSubTypes({
             @JsonSubTypes.Type(value = PageView.class, name = "pv"),
-            @JsonSubTypes.Type(value = UserProfile.class, name = "up"),
-            @JsonSubTypes.Type(value = PageViewByRegion.class, name = "pvbr"),
-            @JsonSubTypes.Type(value = WindowedPageViewByRegion.class, name = "wpvbr"),
-            @JsonSubTypes.Type(value = RegionCount.class, name = "rc")
     })
     public interface JSONSerdeCompatible {
 
@@ -156,39 +152,8 @@ public class PageViewTypedDemo {
         }
     }
 
-    static public class UserProfile implements JSONSerdeCompatible {
-        public String region;
-        public Long timestamp;
-    }
-
-    static public class PageViewByRegion implements JSONSerdeCompatible {
-        public String user;
-        public String page;
-        public String region;
-    }
-
-    static public class WindowedPageViewByRegion implements JSONSerdeCompatible {
-        public long windowStart;
-        public String region;
-    }
-
-    static public class RegionCount implements JSONSerdeCompatible {
-        public long count;
-        public String region;
-    }
-
     public static void main(final String[] args) throws IOException {
-        //Test String
-        String test = "{\"_t\":\"pv\",\n" +
-                "  \"user\":\"hans\",\n" +
-                "  \"page\":\"news\",\n" +
-                "  \"timestamp\":12908734094\n" +
-                "}";
-        PageView pageView = Json.fromJson(Json.parse(test), PageView.class);
-        JsonPOJOSerializer<PageView> jp= new JsonPOJOSerializer<>();
-        System.out.println(jp.serialize("test",  pageView));
-
-        Properties props = new Properties();
+                Properties props = new Properties();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "test_stream");
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, JSONSerde.class);
@@ -196,7 +161,7 @@ public class PageViewTypedDemo {
 
         final StreamsBuilder builder = new StreamsBuilder();
 
-        builder.stream("my_first",
+        builder.stream("my_second",
                         Consumed.with(Serdes.String(), new JSONSerde<>()))
                 .peek((k, pv) -> System.out.println(pv));
 

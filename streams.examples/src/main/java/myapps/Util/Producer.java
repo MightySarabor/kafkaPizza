@@ -26,8 +26,6 @@ public class Producer {
 
         for(int i = 0; i <= 1000; i++) {
             String topic = "streams-plaintext-input";
-            String value = Json.prettyPrint(Json.toJson(generateOrder()));
-            System.out.println(value);
             ProducerRecord<String, String> record =
                     new ProducerRecord<String, String>(topic, Json.stringify(Json.toJson(generateOrder())));
             //Sending data

@@ -49,7 +49,7 @@ public class Pipe {
 
         builder.stream("streams-plaintext-input",
                         Consumed.with(Serdes.String(), new PageViewTypedDemo.JSONSerde<>()))
-                .peek((k, pizza) -> System.out.println(pizza));
+                .peek((k, order) -> System.out.println(order));
 
 
         final Topology topology = builder.build();
