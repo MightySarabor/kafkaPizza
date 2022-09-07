@@ -130,7 +130,7 @@ public class PizzaOrders {
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "_t")
     @JsonSubTypes({
             @JsonSubTypes.Type(value = PageView.class, name = "pv"),
-            @JsonSubTypes.Type(value = PageView.class, name = "pizza"),
+            @JsonSubTypes.Type(value = PizzaPOJO.class, name = "pizza"),
     })
     public interface JSONSerdeCompatible {
 
@@ -155,14 +155,12 @@ public class PizzaOrders {
     public class PizzaPOJO implements JSONSerdeCompatible {
         public String name;
         public String size;
-        public float price;
 
         @Override
         public String toString() {
             return "PizzaPOJO{" +
                     "name='" + name + '\'' +
                     ", size='" + size + '\'' +
-                    ", price=" + price +
                     '}';
         }
     }
