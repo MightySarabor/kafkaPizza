@@ -152,7 +152,7 @@ public class PizzaOrders {
         }
     }
 
-    public class PizzaPOJO implements JSONSerdeCompatible {
+    static public class PizzaPOJO implements JSONSerdeCompatible {
         public String name;
         public String size;
 
