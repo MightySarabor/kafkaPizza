@@ -10,6 +10,7 @@ import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 
 import static myapps.Util.POJOGenerator.generateOrder;
+import static myapps.Util.POJOGenerator.generatePizza;
 
 public class Producer {
     public static void main(String[] args) throws JsonProcessingException, ExecutionException, InterruptedException {
@@ -25,9 +26,9 @@ public class Producer {
 
 
         for(int i = 0; i <= 1000; i++) {
-            String topic = "streams-plaintext-input";
+            String topic = "my_fifth";
             ProducerRecord<String, String> record =
-                    new ProducerRecord<String, String>(topic, Json.stringify(Json.toJson(generateOrder())));
+                    new ProducerRecord<String, String>(topic, Json.stringify(Json.toJson(generatePizza())));
             //Sending data
             first_producer.send(record, new Callback() {
                 public void onCompletion(RecordMetadata recordMetadata, Exception e) {

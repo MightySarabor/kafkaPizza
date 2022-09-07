@@ -141,7 +141,7 @@ public class PizzaDemo {
 
         @Override
         public String toString() {
-            return "PageView{" +
+            return "Pizza{" +
                     "name='" + name + '\'' +
                     ", size='" + size + '\'' +
                     '}';
