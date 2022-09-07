@@ -128,7 +128,7 @@ public class PizzaDemo {
     @SuppressWarnings("DefaultAnnotationParam") // being explicit for the example
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "_t")
     @JsonSubTypes({
-            @JsonSubTypes.Type(value = Pizza.class, name = "pv"),
+            @JsonSubTypes.Type(value = Pizza.class, name = "pizza"),
     })
     public interface JSONSerdeCompatible {
 
@@ -159,7 +159,7 @@ public class PizzaDemo {
 
         builder.stream("my_third",
                         Consumed.with(Serdes.String(), new JSONSerde<>()))
-                .peek((k, pv) -> System.out.println(pv));
+                .peek((k, pizza) -> System.out.println(pizza));
 
 
         final Topology topology = builder.build();
