@@ -47,7 +47,7 @@ public class Pipe {
 
         final StreamsBuilder builder = new StreamsBuilder();
 
-        builder.stream("my_first",
+        builder.stream("streams-plaintext-input",
                         Consumed.with(Serdes.String(), new PageViewTypedDemo.JSONSerde<>()))
                 .peek((k, pizza) -> System.out.println(pizza));
 

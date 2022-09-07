@@ -25,11 +25,11 @@ public class Producer {
 
 
         for(int i = 0; i <= 1000; i++) {
-            String topic = "my_first";
+            String topic = "streams-plaintext-input";
             String value = Json.prettyPrint(Json.toJson(generateOrder()));
             System.out.println(value);
             ProducerRecord<String, String> record =
-                    new ProducerRecord<String, String>("my_first", Json.stringify(Json.toJson(generateOrder())));
+                    new ProducerRecord<String, String>(topic, Json.stringify(Json.toJson(generateOrder())));
             //Sending data
             first_producer.send(record, new Callback() {
                 public void onCompletion(RecordMetadata recordMetadata, Exception e) {
