@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import myapps.Util.Json.Json;
 import org.apache.kafka.common.errors.SerializationException;
 import org.apache.kafka.common.serialization.Deserializer;
 import org.apache.kafka.common.serialization.Serde;
@@ -129,6 +130,7 @@ public class PizzaOrders {
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "_t")
     @JsonSubTypes({
             @JsonSubTypes.Type(value = PageView.class, name = "pv"),
+            @JsonSubTypes.Type(value = PageView.class, name = "pizza"),
     })
     public interface JSONSerdeCompatible {
 
@@ -150,6 +152,55 @@ public class PizzaOrders {
         }
     }
 
+    public class PizzaPOJO implements JSONSerdeCompatible {
+        private String name;
+        private String size;
+        private float price;
+
+        public PizzaPOJO() {
+
+        }
+
+        public PizzaPOJO(String name, String size, float price){
+            this.name = name;
+            this.size = size;
+            this.price = price;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getSize() {
+            return size;
+        }
+
+        public void setSize(String size) {
+            this.size = size;
+        }
+
+        public float getPrice() {
+            return price;
+        }
+
+        public void setPrice(float price) {
+            this.price = price;
+        }
+
+        @Override
+        public String toString() {
+            return "PizzaPOJO{" +
+                    "name='" + name + '\'' +
+                    ", size='" + size + '\'' +
+                    ", price=" + price +
+                    '}';
+        }
+    }
+
     public static void main(final String[] args) throws IOException {
         Properties props = new Properties();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "test_stream");
@@ -161,7 +212,7 @@ public class PizzaOrders {
 
         builder.stream("my_second",
                         Consumed.with(Serdes.String(), new JSONSerde<>()))
-                .peek((k, pv) -> System.out.println(pv));
+                .peek((k, pizza) -> System.out.println(pizza));
 
 
         final Topology topology = builder.build();
