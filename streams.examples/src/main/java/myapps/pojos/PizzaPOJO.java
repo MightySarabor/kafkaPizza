@@ -18,6 +18,14 @@ public class PizzaPOJO {
         this.price = price;
     }
 
+    public String get_t() {
+        return _t;
+    }
+
+    public void set_t(String _t) {
+        this._t = _t;
+    }
+
     public String getName() {
         return name;
     }
