@@ -17,7 +17,8 @@ public class Producer {
         System.setProperty("java.security.auth.login.config", "/home/fleschm/kafka.jaas");
 
         //properties
-        String bootstrapServers = "localhost:9092";
+        String bootstrapServers =
+                "infbdt07.fh-trier.de:6667,infbdt08.fh-trier.de:6667,infbdt09.fh-trier.de:6667";
         Properties properties = new Properties();
         properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
@@ -30,7 +31,7 @@ public class Producer {
 
 
         while(true) {
-            String topic = "my_eighth";
+            String topic = "fleschm-one";
             String value = Json.stringify(Json.toJson(generatePizza()));
             ProducerRecord<String, String> record =
                     new ProducerRecord<String, String>(topic, value);
