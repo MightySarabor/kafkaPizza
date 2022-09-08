@@ -151,11 +151,18 @@ public class PizzaDemo {
     }
 
     public static void main(final String[] args) throws IOException {
+        System.setProperty("java.security.auth.login.config", "/home/fleschm/kafka.jaas");
         Properties props = new Properties();
-        props.put(StreamsConfig.APPLICATION_ID_CONFIG, "test_stream");
-        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        props.put(StreamsConfig.APPLICATION_ID_CONFIG, "fleschm-pizza");
+        props.put(StreamsConfig.REPLICATION_FACTOR_CONFIG, 2);
+        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,
+                "infbdt07.fh-trier.de:6667,infbdt08.fh-trier.de:6667,infbdt09.fh-trier.de:6667");
         props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, JSONSerde.class);
         props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, JSONSerde.class);
+
+        props.put("security.protocol", "SASL_PLAINTEXT");
+        props.put("enable.auto.commit", "true");
+        props.put("auto.commit.interval.ms", "100");
 
         final StreamsBuilder builder = new StreamsBuilder();
 
@@ -163,6 +170,8 @@ public class PizzaDemo {
                         Consumed.with(Serdes.String(), new JSONSerde<>()))
                 .peek((k, pizza) -> System.out.println(pizza));
 
+        System.err.println("<--- Stateful Example --->");
+        System.err.println("Building topology.");
 
         final Topology topology = builder.build();
         final KafkaStreams streams = new KafkaStreams(topology, props);
