@@ -1,6 +1,8 @@
 package myapps.pojos;
 
 public class PizzaPOJO {
+
+    private String _t;
     private String name;
     private String size;
     private float price;
@@ -10,6 +12,7 @@ public class PizzaPOJO {
     }
 
     public PizzaPOJO(String name, String size, float price){
+        this._t = "pizza";
         this.name = name;
         this.size = size;
         this.price = price;
@@ -42,7 +45,8 @@ public class PizzaPOJO {
     @Override
     public String toString() {
         return "PizzaPOJO{" +
-                "name='" + name + '\'' +
+                "_t='" + _t + '\'' +
+                ", name='" + name + '\'' +
                 ", size='" + size + '\'' +
                 ", price=" + price +
                 '}';

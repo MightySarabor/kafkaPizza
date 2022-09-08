@@ -161,7 +161,7 @@ public class PizzaDemo {
 
         builder.stream("my_sixth",
                         Consumed.with(Serdes.String(), new JSONSerde<>()))
-                .peek((k, pv) -> System.out.println(pv));
+                .peek((k, pizza) -> System.out.println(pizza));
 
 
         final Topology topology = builder.build();

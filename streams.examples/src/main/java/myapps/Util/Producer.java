@@ -25,10 +25,12 @@ public class Producer {
 
 
 
-        for(int i = 0; i <= 1000; i++) {
-            String topic = "my_fifth";
+        while(true) {
+            String topic = "my_seventh";
+            String value = generatePizza().toString();
             ProducerRecord<String, String> record =
-                    new ProducerRecord<String, String>(topic, Json.stringify(Json.toJson(generatePizza())));
+                    new ProducerRecord<String, String>(topic, value);
+            System.out.println(value);
             //Sending data
             first_producer.send(record, new Callback() {
                 public void onCompletion(RecordMetadata recordMetadata, Exception e) {
@@ -45,7 +47,5 @@ public class Producer {
                 }
             }).get();
         }
-        first_producer.flush();
-        first_producer.close();
     }
 }
