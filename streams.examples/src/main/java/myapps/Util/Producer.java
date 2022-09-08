@@ -27,7 +27,7 @@ public class Producer {
 
         while(true) {
             String topic = "my_seventh";
-            String value = generatePizza().toString();
+            String value = Json.stringify(Json.toJson(generatePizza()));
             ProducerRecord<String, String> record =
                     new ProducerRecord<String, String>(topic, value);
             System.out.println(value);
