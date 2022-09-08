@@ -138,12 +138,14 @@ public class PizzaDemo {
     static public class Pizza implements JSONSerdeCompatible {
         public String name;
         public String size;
+        public float price;
 
         @Override
         public String toString() {
             return "Pizza{" +
                     "name='" + name + '\'' +
                     ", size='" + size + '\'' +
+                    ", price=" + price +
                     '}';
         }
     }
