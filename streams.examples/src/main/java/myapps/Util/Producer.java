@@ -32,7 +32,7 @@ public class Producer {
                     new ProducerRecord<String, String>(topic, value);
             System.out.println(value);
             //Sending data
-            Thread.sleep(1000);
+            Thread.sleep(10000);
             first_producer.send(record, new Callback() {
                 public void onCompletion(RecordMetadata recordMetadata, Exception e) {
 
