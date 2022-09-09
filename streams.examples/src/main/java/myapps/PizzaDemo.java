@@ -30,6 +30,7 @@ import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.kstream.Consumed;
+import org.apache.kafka.streams.kstream.KStream;
 
 import java.io.IOException;
 import java.util.Map;
@@ -166,9 +167,10 @@ public class PizzaDemo {
 
         final StreamsBuilder builder = new StreamsBuilder();
 
-        builder.stream("fleschm-one",
-                        Consumed.with(Serdes.String(), new JSONSerde<>()))
-                .peek((k, pizza) -> System.out.println(pizza));
+        final KStream<String, Pizza> views = builder.stream("fleschm-one",
+                Consumed.with(Serdes.String(), new JSONSerde<>()));
+
+        views.groupBy((k, v) -> v.name).count().toStream().to("fleschm-two");
 
         System.err.println("<--- Stateful Example --->");
         System.err.println("Building topology.");

@@ -19,14 +19,16 @@ public class Producer {
         //properties
         String bootstrapServers =
                 "infbdt07.fh-trier.de:6667,infbdt08.fh-trier.de:6667,infbdt09.fh-trier.de:6667";
-        Properties properties = new Properties();
-        properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
-        properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        Properties props = new Properties();
+        props.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
+        props.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        props.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 
-        properties.put("security.protocol", "SASL_PLAINTEXT");
+        props.put("security.protocol", "SASL_PLAINTEXT");
+        props.put("enable.auto.commit", "true");
+        props.put("auto.commit.interval.ms", "100");
 
-        KafkaProducer<String,String> first_producer = new KafkaProducer<String, String>(properties);
+        KafkaProducer<String,String> first_producer = new KafkaProducer<String, String>(props);
 
 
 
