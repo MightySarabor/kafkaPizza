@@ -169,7 +169,7 @@ public class PizzaDemo {
 
         final StreamsBuilder builder = new StreamsBuilder();
 
-        builder.stream("fleschm-five",
+        builder.stream("fleschm-six",
                 Consumed.with(Serdes.String(), new JSONSerde<>()))
         .peek((k, pv) -> System.out.println(pv))
         .to("fleschm-two", Produced.with(Serdes.String(), new JSONSerde<>()));
