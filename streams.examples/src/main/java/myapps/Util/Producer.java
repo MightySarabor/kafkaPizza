@@ -33,7 +33,7 @@ public class Producer {
 
 
         while(true) {
-            String topic = "fleschm-four";
+            String topic = "fleschm-five";
             String value = Json.stringify(Json.toJson(generatePizza()));
             ProducerRecord<String, String> record =
                     new ProducerRecord<String, String>(topic, value);

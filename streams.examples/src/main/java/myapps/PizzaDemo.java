@@ -20,6 +20,7 @@ package myapps;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import myapps.Util.Json.Json;
 import org.apache.kafka.common.errors.SerializationException;
 import org.apache.kafka.common.serialization.Deserializer;
 import org.apache.kafka.common.serialization.Serde;
@@ -168,7 +169,7 @@ public class PizzaDemo {
 
         final StreamsBuilder builder = new StreamsBuilder();
 
-        builder.stream("fleschm-four",
+        builder.stream("fleschm-five",
                 Consumed.with(Serdes.String(), new JSONSerde<>()))
         .peek((k, pv) -> System.out.println(pv))
         .to("fleschm-two", Produced.with(Serdes.String(), new JSONSerde<>()));
