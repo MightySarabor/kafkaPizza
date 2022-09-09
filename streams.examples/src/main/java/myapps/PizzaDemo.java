@@ -170,6 +170,7 @@ public class PizzaDemo {
         final KStream<String, Pizza> views = builder.stream("fleschm-one",
                 Consumed.with(Serdes.String(), new JSONSerde<>()));
 
+        views.peek((k, pv) -> System.out.println(pv));
         views.groupBy((k, v) -> v.name).count().toStream().to("fleschm-two");
 
         System.err.println("<--- Stateful Example --->");
