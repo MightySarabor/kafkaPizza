@@ -171,8 +171,7 @@ public class PizzaDemo {
 
         builder.stream("fleschm-six",
                 Consumed.with(Serdes.String(), new JSONSerde<>()))
-        .peek((k, pv) -> System.out.println(pv))
-        .to("fleschm-two", Produced.with(Serdes.String(), new JSONSerde<>()));
+        .peek((k, pv) -> System.out.println(pv));
 
         System.err.println("<--- Stateful Example --->");
         System.err.println("Building topology.");
