@@ -167,7 +167,7 @@ public class PizzaDemo {
 
         final StreamsBuilder builder = new StreamsBuilder();
 
-        final KStream<String, Pizza> views = builder.stream("fleschm-one",
+        final KStream<String, Pizza> views = builder.stream("fleschm-three",
                 Consumed.with(Serdes.String(), new JSONSerde<>()));
 
         views.peek((k, pv) -> System.out.println(pv));
