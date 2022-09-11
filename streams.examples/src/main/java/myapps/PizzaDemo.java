@@ -160,8 +160,10 @@ public class PizzaDemo {
         props.put(StreamsConfig.REPLICATION_FACTOR_CONFIG, 2);
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,
                 "infbdt07.fh-trier.de:6667,infbdt08.fh-trier.de:6667,infbdt09.fh-trier.de:6667");
-        props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, JSONSerde.class);
-        props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, JSONSerde.class);
+        props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+        props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+        //props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, JSONSerde.class);
+        //props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, JSONSerde.class);
 
         props.put("security.protocol", "SASL_PLAINTEXT");
         props.put("enable.auto.commit", "true");
@@ -169,8 +171,8 @@ public class PizzaDemo {
 
         final StreamsBuilder builder = new StreamsBuilder();
 
-        builder.stream("fleschm-seven", Consumed.with(Serdes.String(),Serdes.String()))
-                .to("fleschm-two", Produced.with(Serdes.String(),Serdes.String()));
+        builder.stream("fleschm-seven")
+                .to("fleschm-two");
 
         System.err.println("<--- Stateful Example --->");
         System.err.println("Building topology.");
