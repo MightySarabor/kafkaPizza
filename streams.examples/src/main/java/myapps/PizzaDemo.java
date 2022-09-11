@@ -169,9 +169,10 @@ public class PizzaDemo {
 
         final StreamsBuilder builder = new StreamsBuilder();
 
-        builder.stream("fleschm-seven",
-                Consumed.with(Serdes.String(), new JSONSerde<>()))
-        .peek((k, pv) -> System.out.println(pv));
+        final KStream<String, Pizza> orders = builder.stream("fleschm-seven",
+                Consumed.with(Serdes.String(), new JSONSerde<>()));
+        orders.peek((k, pv) -> System.out.println(pv));
+        orders.groupBy((k, v) -> v.name).count().toStream().to("fleschm-two");
 
         System.err.println("<--- Stateful Example --->");
         System.err.println("Building topology.");
