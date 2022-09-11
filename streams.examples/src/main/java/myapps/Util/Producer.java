@@ -32,7 +32,7 @@ public class Producer {
 
 
 
-        while(true) {
+        /* while(true) {
             String topic = "fleschm-six";
             String value = Json.stringify(Json.toJson(generatePizza()));
             ProducerRecord<String, String> record =
@@ -54,6 +54,6 @@ public class Producer {
                     }
                 }
             }).get();
-        }
+        } */
     }
 }
