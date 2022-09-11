@@ -32,15 +32,15 @@ public class Producer {
 
 
 
-        /* while(true) {
-            String topic = "fleschm-six";
+        /* while(true) {*/
+            String topic = "fleschm-seven";
             String value = Json.stringify(Json.toJson(generatePizza()));
             ProducerRecord<String, String> record =
                     new ProducerRecord<String, String>(topic, value);
             System.out.println(value);
             //Sending data
             Thread.sleep(10000);
-            first_producer.send(record, new Callback() {
+            /*first_producer.send(record, new Callback() {
                 public void onCompletion(RecordMetadata recordMetadata, Exception e) {
 
                     if (e == null) {
