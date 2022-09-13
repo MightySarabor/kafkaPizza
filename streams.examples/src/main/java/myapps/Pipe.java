@@ -51,7 +51,8 @@ public class Pipe {
         // Unsere eigentliche Verarbeitung: lies die Daten aus Topic 1, mache irgendwas mit
         // dem Key, und schreibe die Daten nach Topic 2.
         builder.stream("fleschm-1")
-                .peek((k, v) -> {System.err.println(v);});
+                .peek((k, v) -> {System.err.println(v);})
+                .to("fleschm-seven");
 
         final Topology topology = builder.build();
         final KafkaStreams streams = new KafkaStreams(topology, props);
