@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fe6bc2e0-3f27-4dec-8fc1-42500a0ad780" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/streams.examples/src/main/java/myapps/PageViewTypedDemo.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/streams.examples/src/main/java/myapps/PizzaDemo.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/streams.examples/src/main/java/myapps/Util/Producer.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2ELxKOWlS0MKWZJ18QjvhvOOnQ9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Max/IdeaProjects/kafkaPizza/streams.examples/src/main/resources&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.import&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\resources" />
+      <recent name="C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\java\test\myapps\pojos" />
+      <recent name="C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\test.myapps.pojos" />
+      <recent name="C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\java\myapps" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\test.myapps" />
+      <recent name="C:\Users\Max\IdeaProjects\kafkaPizza\streams.examples\src\main\test.myapps." />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="java.test.myapps" />
+      <recent name="myapps.Util" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="myapps" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.myapps.PageViewTypedDemo">
+    <configuration name="POJOGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="myapps.Util.POJOGenerator" />
+      <module name="streams.examples" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="myapps.Util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="myapps.PageViewTypedDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="myapps.PageViewTypedDemo" />
+      <module name="streams.examples" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="myapps.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JsonTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="streams.examples" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.myapps.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.myapps" />
+      <option name="MAIN_CLASS_NAME" value="test.myapps.JsonTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JsonTest.parse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="streams.examples" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.myapps.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.myapps" />
+      <option name="MAIN_CLASS_NAME" value="test.myapps.JsonTest" />
+      <option name="METHOD_NAME" value="parse" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JsonTest.stringify" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="streams.examples" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.myapps.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.myapps" />
+      <option name="MAIN_CLASS_NAME" value="test.myapps.JsonTest" />
+      <option name="METHOD_NAME" value="stringify" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.myapps.PageViewTypedDemo" />
+        <item itemvalue="Application.POJOGenerator" />
+        <item itemvalue="JUnit.JsonTest" />
+        <item itemvalue="JUnit.JsonTest.stringify" />
+        <item itemvalue="JUnit.JsonTest.parse" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fe6bc2e0-3f27-4dec-8fc1-42500a0ad780" name="Changes" comment="" />
+      <created>1662388607004</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1662388607004</updated>
+      <workItem from="1662388611889" duration="9381000" />
+      <workItem from="1662409666076" duration="789000" />
+      <workItem from="1662412784063" duration="758000" />
+      <workItem from="1662418129358" duration="282000" />
+      <workItem from="1662466480177" duration="2025000" />
+      <workItem from="1662468544057" duration="4613000" />
+      <workItem from="1662474089208" duration="9982000" />
+      <workItem from="1662496667724" duration="996000" />
+      <workItem from="1662499180360" duration="1180000" />
+      <workItem from="1662553581765" duration="7717000" />
+      <workItem from="1662570477713" duration="13677000" />
+      <workItem from="1662905280550" duration="134000" />
+      <workItem from="1662906438282" duration="4254000" />
+      <workItem from="1663069292679" duration="391000" />
+      <workItem from="1663071112749" duration="27000" />
+      <workItem from="1663071315838" duration="19000" />
+      <workItem from="1663073767113" duration="2955000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
