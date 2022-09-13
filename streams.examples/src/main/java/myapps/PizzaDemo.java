@@ -171,8 +171,8 @@ public class PizzaDemo {
 
         final StreamsBuilder builder = new StreamsBuilder();
 
-        builder.stream("fleschm-seven")
-                .to("fleschm-two");
+        builder.stream("fleschm-1")
+                .to("fleschm-2");
 
         System.err.println("<--- Stateful Example --->");
         System.err.println("Building topology.");
