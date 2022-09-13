@@ -45,7 +45,9 @@ public class Pipe {
 
         final StreamsBuilder builder = new StreamsBuilder();
 
-        builder.stream("fleschm-1").to("fleschm-2");
+        builder.stream("fleschm-1")
+                .peek((k,v) -> {System.err.println("input: "+ v);})
+                .to("fleschm-2");
 
         final Topology topology = builder.build();
         final KafkaStreams streams = new KafkaStreams(topology, props);
