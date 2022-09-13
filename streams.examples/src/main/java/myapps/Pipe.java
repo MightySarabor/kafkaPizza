@@ -36,23 +36,23 @@ public class Pipe {
 
         Properties props = new Properties();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "fleschm-test");
-        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,
-                "infbdt07.fh-trier.de:6667,infbdt08.fh-trier.de:6667,infbdt09.fh-trier.de:6667");
+        //props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,
+        //        "infbdt07.fh-trier.de:6667,infbdt08.fh-trier.de:6667,infbdt09.fh-trier.de:6667");
+        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
         props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 
-        props.put("security.protocol", "SASL_PLAINTEXT");
-        props.put("enable.auto.commit", "true");
-        props.put("auto.commit.interval.ms", "1000");
+        //props.put("security.protocol", "SASL_PLAINTEXT");
+        //props.put("enable.auto.commit", "true");
+        //props.put("auto.commit.interval.ms", "1000");
 
         final StreamsBuilder builder = new StreamsBuilder();
 
         System.err.println("-----Starting Processor-----");
-        // Unsere eigentliche Verarbeitung: lies die Daten aus Topic 1, mache irgendwas mit
-        // dem Key, und schreibe die Daten nach Topic 2.
-        builder.stream("fleschm-1")
+
+        builder.stream("my_first")
                 .peek((k, v) -> {System.err.println(v);})
-                .to("fleschm-seven");
+                .to("my_second");
 
         final Topology topology = builder.build();
         final KafkaStreams streams = new KafkaStreams(topology, props);
