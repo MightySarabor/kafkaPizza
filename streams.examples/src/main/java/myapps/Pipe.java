@@ -46,10 +46,12 @@ public class Pipe {
         props.put("auto.commit.interval.ms", "1000");
 
         final StreamsBuilder builder = new StreamsBuilder();
+
         System.err.println("-----Starting Processor-----");
         // Unsere eigentliche Verarbeitung: lies die Daten aus Topic 1, mache irgendwas mit
         // dem Key, und schreibe die Daten nach Topic 2.
-        builder.stream("fleschm-1").to("fleschm-2");
+        builder.stream("fleschm-1")
+                .peek((k, v) -> {System.err.println(v);});
 
         final Topology topology = builder.build();
         final KafkaStreams streams = new KafkaStreams(topology, props);
