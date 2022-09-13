@@ -31,7 +31,7 @@ import org.apache.kafka.streams.kstream.KStream;
  *
  * /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh \
  * --bootstrap-server infbdt06:6667,infbdt07:6667,infbdt08:6667 \ --topic
- * schmi-2 \ --consumer-property security.protocol=SASL_PLAINTEXT
+ * fleschm-2 \ --consumer-property security.protocol=SASL_PLAINTEXT
  */
 public class SendProcessExample {
     private static final Random RND = new Random();
@@ -101,7 +101,7 @@ public class SendProcessExample {
         streams.start();
 
         Runtime.getRuntime().addShutdownHook(new Thread(producer::close));
-        Runtime.getRuntime().addShutdownHook(new Thread(StreamExample::shutdown));
+        Runtime.getRuntime().addShutdownHook(new Thread(SendProcessExample::shutdown));
     }
 
     public static void shutdown() {
