@@ -41,6 +41,10 @@ public class Pipe {
         props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
         props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 
+        props.put("security.protocol", "SASL_PLAINTEXT");
+        props.put("enable.auto.commit", "true");
+        props.put("auto.commit.interval.ms", "1000");
+
         final StreamsBuilder builder = new StreamsBuilder();
         System.err.println("-----Starting Processor-----");
         // Unsere eigentliche Verarbeitung: lies die Daten aus Topic 1, mache irgendwas mit
