@@ -32,7 +32,7 @@ public class Pipe {
 
     public static void main(String[] args) throws Exception {
 
-        System.setProperty("java.security.auth.login.config", "/home/fleschm/kafka.jaas");
+        //System.setProperty("java.security.auth.login.config", "/home/fleschm/kafka.jaas");
 
         Properties props = new Properties();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "fleschm-test");
