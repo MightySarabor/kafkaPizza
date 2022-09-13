@@ -33,15 +33,19 @@ import java.util.concurrent.CountDownLatch;
 public class Pipe {
 
     public static void main(String[] args) throws Exception {
+
+        System.setProperty("java.security.auth.login.config", "/home/fleschm/kafka.jaas");
+
         Properties props = new Properties();
-        props.put(StreamsConfig.APPLICATION_ID_CONFIG, "streams-pipe");
-        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        props.put(StreamsConfig.APPLICATION_ID_CONFIG, "fleschm-test");
+        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,
+                "infbdt07.fh-trier.de:6667,infbdt08.fh-trier.de:6667,infbdt09.fh-trier.de:6667");
         props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
         props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 
         final StreamsBuilder builder = new StreamsBuilder();
 
-        builder.stream("streams-plaintext-input").to("streams-pipe-output");
+        builder.stream("fleschm-1").to("fleschm-2");
 
         final Topology topology = builder.build();
         final KafkaStreams streams = new KafkaStreams(topology, props);
