@@ -42,14 +42,10 @@ public class Pipe {
         props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 
         final StreamsBuilder builder = new StreamsBuilder();
-
+        System.err.println("-----Starting Processor-----");
         // Unsere eigentliche Verarbeitung: lies die Daten aus Topic 1, mache irgendwas mit
         // dem Key, und schreibe die Daten nach Topic 2.
-        KStream<String, String> lines = builder.stream("fleschm-1");
-
-        lines.map((k, v) -> new KeyValue<String, String>(k, "Transformed in Kafka Streams: " + v))
-                .peek((k, v) -> { System.err.printf("(%s, %s)\n", k, v); })
-                .to("fleschm-2");
+        builder.stream("fleschm-1").to("fleschm-2");
 
         final Topology topology = builder.build();
         final KafkaStreams streams = new KafkaStreams(topology, props);
