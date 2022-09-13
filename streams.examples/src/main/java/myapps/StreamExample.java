@@ -29,14 +29,14 @@ public class StreamExample {
     
     public static void main(String[] args) {
         // Achtung, Datei kafka.jaas muss angepasst werden!
-        System.setProperty("java.security.auth.login.config", "/home/schmi/kafka.jaas");
+        System.setProperty("java.security.auth.login.config", "/home/fleschm/kafka.jaas");
 
         StreamsBuilder builder = new StreamsBuilder();
 
-        KStream<String, String> lines = builder.stream("schmi-1");
+        KStream<String, String> lines = builder.stream("fleschm-1");
         KStream<String, String> transformed = lines
                 .map((k, v) -> new KeyValue<String, String>(k, "Transformed in Kafka Streams: " + v));
-        transformed.to("schmi-2");
+        transformed.to("fleschm-2");
 
         Properties config = new Properties();
         config.put(StreamsConfig.APPLICATION_ID_CONFIG, "filter-warnings");
