@@ -17,10 +17,8 @@
 package myapps;
 
 import org.apache.kafka.common.serialization.Serdes;
-import org.apache.kafka.streams.KafkaStreams;
-import org.apache.kafka.streams.StreamsBuilder;
-import org.apache.kafka.streams.StreamsConfig;
-import org.apache.kafka.streams.Topology;
+import org.apache.kafka.streams.*;
+import org.apache.kafka.streams.kstream.KStream;
 
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
@@ -45,8 +43,12 @@ public class Pipe {
 
         final StreamsBuilder builder = new StreamsBuilder();
 
-        builder.stream("fleschm-1")
-                .peek((k,v) -> {System.err.println("input: "+ v);})
+        // Unsere eigentliche Verarbeitung: lies die Daten aus Topic 1, mache irgendwas mit
+        // dem Key, und schreibe die Daten nach Topic 2.
+        KStream<String, String> lines = builder.stream("fleschm-1");
+
+        lines.map((k, v) -> new KeyValue<String, String>(k, "Transformed in Kafka Streams: " + v))
+                .peek((k, v) -> { System.err.printf("(%s, %s)\n", k, v); })
                 .to("fleschm-2");
 
         final Topology topology = builder.build();
